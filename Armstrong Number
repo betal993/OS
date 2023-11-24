@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Function to calculate the power of a number
+power() {
+    echo "$1^$2" | bc
+}
+
+# Function to check if a number is Armstrong
+isArmstrong() {
+    num=$1
+    len=${#num}
+    sum=0
+
+    for ((i = 0; i < len; i++)); do
+        digit=${num:i:1}
+        sum=$(($sum + $(power $digit $len)))
+    done
+
+    if [ $sum -eq $num ]; then
+        return 0  # true
+    else
+        return 1  # false
+    fi
+}
+
+# Input range from the user
+read -p "Enter the lower limit of the range: " lower
+read -p "Enter the upper limit of the range: " upper
+
+echo "Armstrong numbers in the range $lower to $upper are:"
+
+# Loop through the range and check for Armstrong numbers
+for ((n = $lower; n <= $upper; n++)); do
+    if isArmstrong $n; then
+        echo $n
+    fi
+done
