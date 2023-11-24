@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Function to check if a file/directory exists
+check_existence() {
+    if [ -e "$1" ]; then
+        echo "$1 exists."
+    else
+        echo "$1 does not exist."
+        exit 1
+    fi
+}
+
+# Function to check if a file/directory is readable
+check_readable() {
+    if [ -r "$1" ]; then
+        echo "$1 is readable."
+    else
+        echo "$1 is not readable."
+    fi
+}
+
+# Function to check if a file/directory is writable
+check_writable() {
+    if [ -w "$1" ]; then
+        echo "$1 is writable."
+    else
+        echo "$1 is not writable."
+    fi
+}
+
+# Function to check if a file/directory is executable
+check_executable() {
+    if [ -x "$1" ]; then
+        echo "$1 is executable."
+    else
+        echo "$1 is not executable."
+    fi
+}
+
+# Main script
+read -p "Enter the path to the file or directory: " path
+
+check_existence "$path"
+check_readable "$path"
+check_writable "$path"
+check_executable "$path"
