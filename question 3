@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Decimal to Binary Converter"
+
+# Read the decimal number from the user
+read -p "Enter a decimal number: " decimal
+
+# Perform the conversion
+binary=$(echo "obase=2; $decimal" | bc)
+
+# Display the result
+echo "Binary representation of $decimal is: $binary"
