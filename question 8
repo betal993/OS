@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo "Pattern Search Script"
+
+# Prompt user for a string
+read -p "Enter a string to search: " search_string
+
+# Check if the user entered a string
+if [ -z "$search_string" ]; then
+    echo "You've not entered any string."
+    exit 1
+fi
+
+# Prompt user for a file name
+read -p "Enter the file name to search in: " file_name
+
+# Check if the user entered a file name
+if [ -z "$file_name" ]; then
+    echo "You've not entered any file name."
+    exit 1
+fi
+
+# Search for the pattern in the file
+if grep -q "$search_string" "$file_name"; then
+    echo "Pattern found in $file_name."
+else
+    echo "Pattern not found in $file_name."
+fi
