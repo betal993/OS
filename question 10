@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Inverted Mirrored Right Half Pyramid Generator"
+
+rows=5
+
+echo "Generating inverted mirrored right half pyramid:"
+
+for ((i = rows; i >= 1; i--)); do
+    # Add spaces before the '*' to create the mirror effect
+    for ((s = 1; s <= rows - i; s++)); do
+        echo -n "  "
+    done
+    # Print the '*' characters
+    for ((j = 1; j <= i; j++)); do
+        echo -n "* "
+    done
+    echo  # Move to the next line for the next row
+done
