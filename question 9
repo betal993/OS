@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Function to generate a random number
+generate_random_number() {
+    echo $((RANDOM % 100))  # Generates a random number between 0 and 99
+}
+
+# Function to create and print a matrix
+create_and_print_matrix() {
+    rows=$1
+    columns=$2
+
+    echo "Generated $rows x $columns matrix:"
+
+    for ((i = 0; i < rows; i++)); do
+        for ((j = 0; j < columns; j++)); do
+            matrix[$i][$j]=$(generate_random_number)
+            echo -n "${matrix[$i][$j]} "
+        done
+        echo  # Move to the next line for the next row
+    done
+}
+
+# Main script
+echo "Matrix Generator"
+
+read -p "Enter the number of rows (3 or 4): " rows
+read -p "Enter the number of columns (2 or 5): " columns
+
+# Check if the entered values are either 3 or 4 rows and either 2 or 5 columns
+if [ "$rows" != "3" ] && [ "$rows" != "4" ]; then
+    echo "Invalid number of rows. Please enter 3 or 4."
+    exit 1
+fi
+
+if [ "$columns" != "2" ] && [ "$columns" != "5" ]; then
+    echo "Invalid number of columns. Please enter 2 or 5."
+    exit 1
+fi
+
+create_and_print_matrix "$rows" "$columns"
