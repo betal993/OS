@@ -1,0 +1,48 @@
+#!/bin/bash
+
+while true; do
+    echo -e "\nCalculator Menu:"
+    echo "1. Convert foot to inch"
+    echo "2. Convert inch to foot"
+    echo "3. Convert kilometers to miles"
+    echo "4. Convert inch to centimeters"
+    echo "5. Convert centimeters to inch"
+    echo "6. Exit"
+
+    read -p "Enter your choice (1-6): " choice
+
+    case $choice in
+        1)
+            read -p "Enter length in feet: " feet
+            inches=$(echo "$feet * 12" | bc)
+            echo "$feet feet is equal to $inches inches."
+            ;;
+        2)
+            read -p "Enter length in inches: " inches
+            feet=$(echo "scale=2; $inches / 12" | bc)
+            echo "$inches inches is equal to $feet feet."
+            ;;
+        3)
+            read -p "Enter distance in kilometers: " kilometers
+            miles=$(echo "scale=2; $kilometers / 1.60934" | bc)
+            echo "$kilometers kilometers is equal to $miles miles."
+            ;;
+        4)
+            read -p "Enter length in inches: " inches
+            centimeters=$(echo "$inches * 2.54" | bc)
+            echo "$inches inches is equal to $centimeters centimeters."
+            ;;
+        5)
+            read -p "Enter length in centimeters: " centimeters
+            inches=$(echo "$centimeters / 2.54" | bc)
+            echo "$centimeters centimeters is equal to $inches inches."
+            ;;
+        6)
+            echo "Exiting the calculator. Goodbye!"
+            exit 0
+            ;;
+        *)
+            echo "Invalid choice. Please enter a number between 1 and 6."
+            ;;
+    esac
+done
