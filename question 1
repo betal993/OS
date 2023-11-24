@@ -1,0 +1,49 @@
+#!/bin/bash
+
+echo "Server Information Report"
+
+# Display the hostname
+echo -e "\nHostname: $(hostname)"
+
+# Display the operating system information
+echo -e "\nOperating System Information:"
+cat /etc/os-release
+
+# Display the kernel version
+echo -e "\nKernel Version: $(uname -r)"
+
+# Display the CPU information
+echo -e "\nCPU Information:"
+lscpu
+
+# Display memory information
+echo -e "\nMemory Information:"
+free -h
+
+# Display disk space information
+echo -e "\nDisk Space Information:"
+df -h
+
+# Display network information
+echo -e "\nNetwork Information:"
+ip a
+
+# Display current users
+echo -e "\nCurrently Logged-in Users:"
+who
+
+# Display uptime
+echo -e "\nUptime:"
+uptime
+
+# Display running processes
+echo -e "\nRunning Processes:"
+ps aux
+
+# Display listening ports
+echo -e "\nListening Ports:"
+netstat -tuln
+
+# Additional commands may be added based on your specific requirements.
+
+echo -e "\nServer Information Report - End"
