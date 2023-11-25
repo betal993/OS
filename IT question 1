@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo "Perfect Number Finder"
+
+# Function to check if a number is perfect
+isPerfect() {
+    num=$1
+    sum=0
+
+    for ((i = 1; i <= num / 2; i++)); do
+        if [ $((num % i)) -eq 0 ]; then
+            sum=$((sum + i))
+        fi
+    done
+
+    if [ $sum -eq $num ]; then
+        return 0  # true
+    else
+        return 1  # false
+    fi
+}
+
+# Input range from the user
+read -p "Enter the lower limit of the range: " lower
+read -p "Enter the upper limit of the range: " upper
+
+echo "Perfect numbers in the range $lower to $upper are:"
+
+# Loop through the range and check for perfect numbers
+for ((n = $lower; n <= $upper; n++)); do
+    if isPerfect $n; then
+        echo $n
+    fi
+done
