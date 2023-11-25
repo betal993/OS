@@ -1,0 +1,38 @@
+#!/bin/bash
+
+echo "File Copy with Pattern Replacement"
+
+# Prompt the user for the source file
+read -p "Enter the source file name: " sourceFile
+
+# Check if the user entered a source file name
+if [ -z "$sourceFile" ]; then
+    echo "You've not entered any source file name."
+    exit 1
+fi
+
+# Check if the source file exists
+if [ ! -f "$sourceFile" ]; then
+    echo "Source file $sourceFile not found."
+    exit 1
+fi
+
+# Prompt the user for the destination file
+read -p "Enter the destination file name: " destinationFile
+
+# Check if the user entered a destination file name
+if [ -z "$destinationFile" ]; then
+    echo "You've not entered any destination file name."
+    exit 1
+fi
+
+# Prompt the user for the pattern to be replaced
+read -p "Enter the pattern to be replaced: " oldPattern
+
+# Prompt the user for the new pattern
+read -p "Enter the new pattern: " newPattern
+
+# Copy lines from source to destination after replacement
+sed "s/$oldPattern/$newPattern/g" "$sourceFile" > "$destinationFile"
+
+echo "File copied with pattern replacement from '$sourceFile' to '$destinationFile'."
