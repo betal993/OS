@@ -1,0 +1,37 @@
+#!/bin/bash
+
+echo "String Search in File Script"
+
+# Prompt the user for a string
+read -p "Enter the string to search: " searchString
+
+# Check if the user entered a string
+if [ -z "$searchString" ]; then
+    echo "You've not entered any string."
+    exit 1
+fi
+
+# Prompt the user for a file name
+read -p "Enter the file name to search in: " fileName
+
+# Check if the user entered a file name
+if [ -z "$fileName" ]; then
+    echo "You've not entered any file name."
+    exit 1
+fi
+
+# Check if the file exists
+if [ ! -f "$fileName" ]; then
+    echo "File $fileName not found."
+    exit 1
+fi
+
+# Search for the string in the file
+grep -q "$searchString" "$fileName"
+
+# Check the exit status of the grep command
+if [ $? -eq 0 ]; then
+    echo "Found: The string '$searchString' is present in the file '$fileName'."
+else
+    echo "Not Found: The string '$searchString' is not present in the file '$fileName'."
+fi
