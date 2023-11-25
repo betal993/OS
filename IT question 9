@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Function to be executed on Hangup signal
+on_hangup() {
+    echo "Hangup signal received. Executing cleanup function."
+    # Add your cleanup logic here
+    # For example: stop a service, close files, etc.
+    echo "Cleanup complete."
+    exit 0
+}
+
+# Register the on_hangup function to be executed on SIGHUP
+trap 'on_hangup' SIGHUP
+
+echo "Script is running. Press Ctrl+C to send a Hangup signal."
+
+# Infinite loop to keep the script running
+while true; do
+    sleep 1
+done
