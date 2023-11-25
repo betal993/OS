@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "String Length Calculator"
+
+# Prompt the user for a string
+read -p "Enter a string: " userInput
+
+# Calculate and print the length of the string
+length=$(echo -n "$userInput" | wc -c)
+echo "Length of the string '$userInput' is: $length characters."
