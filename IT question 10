@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "Reversed Triangle Pattern Generator"
+
+# Prompt the user for a symbol
+read -p "Enter a symbol to use in the pattern: " symbol
+
+# Check if the user entered a symbol
+if [ -z "$symbol" ]; then
+    echo "You've not entered any symbol."
+    exit 1
+fi
+
+# Prompt the user for the number of rows
+read -p "Enter the number of rows for the pattern: " rows
+
+# Check if the user entered the number of rows
+if ! [[ "$rows" =~ ^[0-9]+$ ]]; then
+    echo "Invalid input. Please enter a valid number of rows."
+    exit 1
+fi
+
+echo "Generating reversed triangle pattern:"
+
+for ((i = rows; i >= 1; i--)); do
+    # Print spaces before the symbol to create the reversed effect
+    for ((s = rows - i; s > 0; s--)); do
+        echo -n " "
+    done
+    # Print the symbols
+    for ((j = 1; j <= i; j++)); do
+        echo -n "$symbol "
+    done
+    echo  # Move to the next line for the next row
+done
