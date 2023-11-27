@@ -1,32 +1,28 @@
 #!/bin/bash
 
-echo "String Case Converter"
-
 while true; do
-    echo -e "\nMenu:"
-    echo "1. Convert Uppercase to Lowercase"
-    echo "2. Convert Lowercase to Uppercase"
+    echo "1. Convert to Uppercase"
+    echo "2. Convert to Lowercase"
     echo "3. Exit"
-
-    read -p "Enter your choice (1-3): " choice
+    read -p "Enter your choice (1/2/3): " choice
 
     case $choice in
         1)
-            read -p "Enter an UPPERCASE string: " uppercase_string
-            lowercase_string=$(echo "$uppercase_string" | tr '[:upper:]' '[:lower:]')
-            echo "Converted to lowercase: $lowercase_string"
+            read -p "Enter a string in lowercase: " input_string
+            uppercase_string=$(echo "$input_string" | tr '[:lower:]' '[:upper:]')
+            echo "Uppercase: $uppercase_string"
             ;;
         2)
-            read -p "Enter a lowercase string: " lowercase_string
-            uppercase_string=$(echo "$lowercase_string" | tr '[:lower:]' '[:upper:]')
-            echo "Converted to UPPERCASE: $uppercase_string"
+            read -p "Enter a string in uppercase: " input_string
+            lowercase_string=$(echo "$input_string" | tr '[:upper:]' '[:lower:]')
+            echo "Lowercase: $lowercase_string"
             ;;
         3)
-            echo "Exiting the script. Goodbye!"
+            echo "Exiting script."
             exit 0
             ;;
         *)
-            echo "Invalid choice. Please enter a number between 1 and 3."
+            echo "Invalid choice. Please enter 1, 2, or 3."
             ;;
     esac
 done
